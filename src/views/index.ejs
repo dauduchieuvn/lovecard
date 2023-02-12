@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="og:image" content="/og-image.jpg">
+    <link rel="icon" href="/icon.png">
+    <title>Nhắn gửi yêu thương ❤</title>
+</head>
+
+<body
+    style="display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: #ffdae0;">
+    <h1 style="padding: 20px; text-align: center;">
+        <span style="color: #ff4242;">Nhắn gửi yêu thương!</span> Liên hệ admin để được hỗ trợ nhé
+    </h1>
+    <button style="padding: 10px; font-size: 30px; border-radius: 5px; background-color: #6dd1ff;" onclick="fn()">Liên
+        hệ</button>
+    <img src="/index/images/qr (2).png" style="width: 200px; margin: 10px;">
+    <span style="padding: 10px; text-align: center;">Nhấn vào nút liên hệ hoặc quét mã QR để nhắn tin trực tiếp với
+        admin nhé!</span>
+    <script>
+        function fn() {
+            window.open('https://m.me/hizcoder')
+        }
+    </script>
+    <script>
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+        function ctrlShiftKey(e, keyCode) {
+            return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
+        }
+        document.onkeydown = (e) => {
+            if (
+                event.keyCode === 123 ||
+                ctrlShiftKey(e, 'I') ||
+                ctrlShiftKey(e, 'J') ||
+                ctrlShiftKey(e, 'C') ||
+                (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))
+            )
+                return false;
+        };
+    </script>
+</body>
+
+</html>

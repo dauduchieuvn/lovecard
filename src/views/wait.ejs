@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="og:image" content="/og-image.jpg">
+    <title>Đợi phản hồi từ người ấy nào!</title>
+    <link rel="icon" href="/icon.png">
+    <link rel="stylesheet" href="/wait/style.css">
+</head>
+
+<body>
+
+    <div class="card" style="position: relative;">
+        <img src="/wait/images/love-message.png" style="height: 150px;" alt="">
+        <div class="title" style="font-size: 30px; font-weight: bold; font-family: 'Mali'; padding: 0 25px;">Thư phản
+            hồi!!!</div>
+        <div class="content"
+            style="padding: 0 25px; font-family: 'Itim'; font-size: 20px; text-align: center; margin: 20px 0;">
+            <%= data.content ? data.content : 'Chưa có phản hồi!' %>
+        </div>
+        <div>_<span class="signature" style="font-family: 'Itim';">
+                <%= data.signature ? data.signature : '' %>
+            </span>_</div>
+    </div>
+
+    <div id="data-id" data--id="<%= data.id %>" style="display: none;"></div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io()
+        const id = document.querySelector('#data-id').getAttribute('data--id')
+        console.log(id)
+        socket.on(`client-res-${id}`, data => {
+            document.querySelector('.content').innerHTML = data.content
+            document.querySelector('.signature').innerHTML = data.signature
+        })
+    </script>
+
+    <script>
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+        function ctrlShiftKey(e, keyCode) {
+            return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
+        }
+        document.onkeydown = (e) => {
+            if (
+                event.keyCode === 123 ||
+                ctrlShiftKey(e, 'I') ||
+                ctrlShiftKey(e, 'J') ||
+                ctrlShiftKey(e, 'C') ||
+                (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))
+            )
+                return false;
+        };
+    </script>
+
+</body>
+
+</html>
